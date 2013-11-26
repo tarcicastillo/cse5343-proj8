@@ -62,11 +62,10 @@ int compare(char *line1, char *line2) {
   int max = 0;
 
   if (sizeLine2 >= sizeLine1)
-  {
     max = sizeLine1;
-  }else {
+  else
     max = sizeLine2;
-  }
+  
 
   interrupt(0x21, 0, line1, 0, 0);
   interrupt(0x21, 0, "\n\r\0", 0, 0);
