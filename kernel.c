@@ -33,16 +33,16 @@ int main() {
 	makeInterrupt21();
 
     /*STEP 1: Load File and Print It */
-    printString("LOAD FILE AND PRINT FILE\n\r\0");
+    /*printString("LOAD FILE AND PRINT FILE\n\r\0");
     interrupt(0x21, 3, "messag\0", buffer, 0); /*read file into buffer*/
-    interrupt(0x21, 0, buffer, 0, 0); /*print out the file*/
+    /*interrupt(0x21, 0, buffer, 0, 0); /*print out the file*/
 
     /*STEP 2: Load Program & Execute it*/
-    printString("\nLOAD PROGRAM THEN EXECUTE: \0");
+   /* printString("\nLOAD PROGRAM THEN EXECUTE: \0");
     interrupt(0x21, 4, "tstprg\0", 0x2000, 0);
 
     /*STEP 3: Terminate a Program System Call */
-    printString("\nTERMINATE PROGRAM SYSTEM CALL\n\r\0");
+   /* printString("\nTERMINATE PROGRAM SYSTEM CALL\n\r\0");
     interrupt(0X21, )
 
     /*Step 4: Creating my Own Interrupt */
@@ -137,6 +137,7 @@ void readFile(char *fileName, char *buffer) {
 /*STEP 2: Load Program & Execute it
  *parameters: name of program to run
  *			  the segment where I want to run
+ *issues! - kinda??? fix?
  */
 void executeProgram(char *name, int segment) {
 	char buf[1000];
@@ -156,6 +157,7 @@ void executeProgram(char *name, int segment) {
 }
 
 /*STEP 3: Terminate the Program System Call*/
+/*issues??!! - kinda*/
 void terminate() {
 	interrupt(0x21, 4, "shell\0", 0x2000, 0);
 }
